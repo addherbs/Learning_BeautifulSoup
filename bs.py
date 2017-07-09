@@ -1,6 +1,7 @@
 import bs4 as bs
 from bs4 import BeautifulSoup
 import urllib.request
+import pandas as pd
 
 source = urllib.request.urlopen ('https://pythonprogramming.net/parsememcparseface/').read ()
 soup = BeautifulSoup(source, 'lxml')
@@ -45,4 +46,18 @@ def parse_table():
         row = [each.text for each in td]
         print(row)
 
-parse_table()
+    dataframes = pd.read_html('https://pythonprogramming.net/parsememcparseface/', header = 0)
+    for df in dataframes:
+        print (df)
+
+# parse_table()
+
+def read_sitemaps():
+    source = urllib.request.urlopen ('https://pythonprogramming.net/sitemap.xml').read ()
+    soup = BeautifulSoup(source, 'xml')
+    # print(soup)
+    for eachurl in soup.find_all('loc'):
+        print(eachurl.text)
+
+
+read_sitemaps()

@@ -2,8 +2,27 @@ import bs4 as bs
 from bs4 import BeautifulSoup
 import urllib.request
 import pandas as pd
+import sys
+from PyQt4.QtGui import QApplication
+from PyQt4.QtCore import QUrl
+from PyQt4.QtWebKit import QWebPage
 
-source = urllib.request.urlopen ('https://pythonprogramming.net/parsememcparseface/').read ()
+#how to load dynamically
+class Client_Dynamic(QWebPage):
+    def __init__(self,url):
+        self.app = QApplication(sys.argv)
+        QWebPage.__init__(self)
+        self.loadFinished.connect(self.on_page_load)
+        self.mainFrame().load(QUrl(url))
+        self.app.exec_()
+
+    def on_page_load(self):
+        self.app.quit()
+
+url = 'https://pythonprogramming.net/parsememcparseface/'
+client_response= Client_Dynamic(url)
+source = client_response.mainFrame().toHtml()
+# source = urllib.request.urlopen ('https://pythonprogramming.net/parsememcparseface/').read ()
 soup = BeautifulSoup(source, 'lxml')
 
 # Understanding title

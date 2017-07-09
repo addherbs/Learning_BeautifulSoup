@@ -60,4 +60,10 @@ def read_sitemaps():
         print(eachurl.text)
 
 
-read_sitemaps()
+# read_sitemaps()
+
+def dynamic_test():
+    js_test = soup.find('p', class_='jstest')
+    print(js_test.string)   # returns static data.. Not the one with the scripts
+
+dynamic_test()

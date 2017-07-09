@@ -29,4 +29,9 @@ def get_url():
     for url in soup.find_all('a'):
         print(url.get('href'))
 
-get_url()
+def get_specific():
+    for div in soup.find_all('div',class_='body'):
+        print(div.text)
+
+# get_specific()
+# print(soup.text)

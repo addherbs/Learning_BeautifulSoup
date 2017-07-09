@@ -3,9 +3,9 @@ from bs4 import BeautifulSoup
 import urllib.request
 import pandas as pd
 import sys
-from PyQt4.QtGui import QApplication
-from PyQt4.QtCore import QUrl
-from PyQt4.QtWebKit import QWebPage
+from PyQt5.QtWidgets import QApplication
+from PyQt5.QtCore import QUrl
+from PyQt5.QtWebKitWidgets import *
 
 #how to load dynamically
 class Client_Dynamic(QWebPage):

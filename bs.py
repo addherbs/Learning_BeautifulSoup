@@ -11,7 +11,7 @@ def get_title():
     title_name = soup.title.name
     title_main = soup.title.string  # title_main = soup.title.text
 
-print (soup.text)   # returns all the texts in the entire  page
+# print (soup.text)   # returns all the texts in the entire  page
 
 # Understanding P tag
 def get_p():
@@ -35,3 +35,14 @@ def get_specific():
 
 # get_specific()
 # print(soup.text)
+
+def parse_table():
+    table = soup.table  #soup.find('table')
+    # print(table)
+    allrows =   table.find_all('tr')
+    for tr in allrows:
+        td = tr.find_all('td')
+        row = [each.text for each in td]
+        print(row)
+
+parse_table()

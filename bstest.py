@@ -19,7 +19,7 @@ class Client_Dynamic(QWebPage):
     def on_page_load(self):
         self.app.quit()
 
-url = 'https://pythonprogramming.net/parsememcparseface/'
+url = 'http://www.lyricsmint.com/?s=zindagi+na+milegi+dobara'
 client_response= Client_Dynamic(url)
 source = client_response.mainFrame().toHtml()
 # source = urllib.request.urlopen ('https://pythonprogramming.net/parsememcparseface/').read ()
@@ -44,6 +44,26 @@ def get_p():
         print ('----------------')
         print (para.text)   #returns the entire main string .. irrespective of the inner tags
         print ('\n--------xxxxxxxxx-----')
+
+def anchor_tags():
+    anc = []
+    # for div in soup.find_all('div', class_='gsc-wrapper'):
+    #     anc.append(div.find('a'))
+    # for a in soup.find_all('div',class_="gs-title"):
+    #     print(a)
+    count = 0
+    for a in soup.find_all ("div", class_='gsc-webResult gsc-result'):
+        for a in a.find ("div", class_='gs-title'):
+            count = count +1
+            print(count)
+            print (a)
+            print('-------------------')
+
+
+    # print(soup.find_all('a'))
+    # print(anc)
+
+anchor_tags()
 
 def get_url():
     for url in soup.find_all('a'):
@@ -85,4 +105,4 @@ def dynamic_test():
     js_test = soup.find('p', class_='jstest')
     print(js_test.string)   # returns static data.. Not the one with the scripts
 
-dynamic_test()
+# dynamic_test()

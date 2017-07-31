@@ -65,10 +65,12 @@ def anchor_tags():
 
 anchor_tags()
 
+#get all anchor tags
 def get_url():
     for url in soup.find_all('a'):
         print(url.get('href'))
 
+#How to search multiple attributes
 def get_specific():
     for div in soup.find_all('div',class_='body'):
         print(div.text)

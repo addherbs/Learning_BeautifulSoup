@@ -87,6 +87,7 @@ def parse_table():
         row = [each.text for each in td]
         print(row)
 
+	#to setup the proper table format dataframes
     dataframes = pd.read_html('https://pythonprogramming.net/parsememcparseface/', header = 0)
     for df in dataframes:
         print (df)
